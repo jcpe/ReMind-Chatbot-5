@@ -13,7 +13,7 @@ const Chatbot = () => {
     setInput('');
 
     try {
-      const response = await axios.post('http://127.0.0.1:5000/chat', { transcript: newMessages }, { withCredentials: true });
+      const response = await axios.post('/ask', { transcript: newMessages }, { withCredentials: true });
       const botMessage = response.data;
       setMessages((prevMessages) => [...prevMessages, { sender: 'bot', text: botMessage }]);
     } catch (error) {

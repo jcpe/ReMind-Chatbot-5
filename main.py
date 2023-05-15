@@ -1,7 +1,6 @@
-from chat_agent import start_agent
-from agent import start_agent as start_regular_agent
-from basic_chat import run_chat
-
+from create_knowledge_base import construct_base_from_directory
 from app import run
 
 run()
+
+# construct_base_from_directory("data")

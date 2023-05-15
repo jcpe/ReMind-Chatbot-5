@@ -4390,7 +4390,7 @@ var Chatbot = function Chatbot() {
             setInput('');
             _context.prev = 5;
             _context.next = 8;
-            return lib_axios.post('http://127.0.0.1:5000/chat', {
+            return lib_axios.post('/ask', {
               transcript: newMessages
             }, {
               withCredentials: true
