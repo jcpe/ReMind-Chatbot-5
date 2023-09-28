@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const Chatbot = () => {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([{ sender: 'bot', text: 'Hey there! How can I help you today?' }]);
   const [input, setInput] = useState('');
 
   const sendMessage = async () => {

@@ -4362,7 +4362,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var Chatbot = function Chatbot() {
-  var _useState = (0,react.useState)([]),
+  var _useState = (0,react.useState)([{
+      sender: 'bot',
+      text: 'Hey there! How can I help you today?'
+    }]),
     _useState2 = _slicedToArray(_useState, 2),
     messages = _useState2[0],
     setMessages = _useState2[1];

@@ -20,6 +20,7 @@ from langchain.tools.ddg_search.tool import DuckDuckGoSearchRun
 from langchain.tools.google_search.tool import GoogleSearchResults, GoogleSearchRun
 from langchain.tools.metaphor_search.tool import MetaphorSearchResults
 from langchain.tools.google_serper.tool import GoogleSerperResults, GoogleSerperRun
+from langchain.tools.graphql.tool import BaseGraphQLTool
 from langchain.tools.human.tool import HumanInputRun
 from langchain.tools.python.tool import PythonREPLTool
 from langchain.tools.requests.tool import (
@@ -34,6 +35,7 @@ from langchain.tools.searx_search.tool import SearxSearchResults, SearxSearchRun
 from langchain.tools.shell.tool import ShellTool
 from langchain.tools.wikipedia.tool import WikipediaQueryRun
 from langchain.tools.wolfram_alpha.tool import WolframAlphaQueryRun
+from langchain.tools.openweathermap.tool import OpenWeatherMapQueryRun
 from langchain.utilities import ArxivAPIWrapper
 from langchain.utilities.bing_search import BingSearchAPIWrapper
 from langchain.utilities.duckduckgo_search import DuckDuckGoSearchAPIWrapper
@@ -41,10 +43,12 @@ from langchain.utilities.google_search import GoogleSearchAPIWrapper
 from langchain.utilities.google_serper import GoogleSerperAPIWrapper
 from langchain.utilities.metaphor_search import MetaphorSearchAPIWrapper
 from langchain.utilities.awslambda import LambdaWrapper
+from langchain.utilities.graphql import GraphQLAPIWrapper
 from langchain.utilities.searx_search import SearxSearchWrapper
 from langchain.utilities.serpapi import SerpAPIWrapper
 from langchain.utilities.wikipedia import WikipediaAPIWrapper
 from langchain.utilities.wolfram_alpha import WolframAlphaAPIWrapper
+from langchain.utilities.openweathermap import OpenWeatherMapAPIWrapper
 
 
 def _get_python_repl() -> BaseTool:
@@ -243,6 +247,16 @@ def _get_scenexplain(**kwargs: Any) -> BaseTool:
     return SceneXplainTool(**kwargs)
 
 
+def _get_graphql_tool(**kwargs: Any) -> BaseTool:
+    graphql_endpoint = kwargs["graphql_endpoint"]
+    wrapper = GraphQLAPIWrapper(graphql_endpoint=graphql_endpoint)
+    return BaseGraphQLTool(graphql_wrapper=wrapper)
+
+
+def _get_openweathermap(**kwargs: Any) -> BaseTool:
+    return OpenWeatherMapQueryRun(api_wrapper=OpenWeatherMapAPIWrapper(**kwargs))
+
+
 _EXTRA_LLM_TOOLS: Dict[
     str,
     Tuple[Callable[[Arg(BaseLanguageModel, "llm"), KwArg(Any)], BaseTool], List[str]],
@@ -284,6 +298,8 @@ _EXTRA_OPTIONAL_TOOLS: Dict[str, Tuple[Callable[[KwArg(Any)], BaseTool], List[st
         ["awslambda_tool_name", "awslambda_tool_description", "function_name"],
     ),
     "sceneXplain": (_get_scenexplain, []),
+    "graphql": (_get_graphql_tool, ["graphql_endpoint"]),
+    "openweathermap-api": (_get_openweathermap, ["openweathermap_api_key"]),
 }
 
 
