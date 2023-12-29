@@ -4373,6 +4373,14 @@ var Chatbot = function Chatbot() {
     _useState4 = _slicedToArray(_useState3, 2),
     input = _useState4[0],
     setInput = _useState4[1];
+  var messagesEndRef = (0,react.useRef)(null);
+  var scrollToBottom = function scrollToBottom() {
+    var _messagesEndRef$curre;
+    (_messagesEndRef$curre = messagesEndRef.current) === null || _messagesEndRef$curre === void 0 ? void 0 : _messagesEndRef$curre.scrollIntoView({
+      behavior: 'smooth'
+    });
+  };
+  (0,react.useEffect)(scrollToBottom, [messages]);
   var sendMessage = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
       var newMessages, response, botMessage;
@@ -4432,6 +4440,8 @@ var Chatbot = function Chatbot() {
       key: index,
       className: "message ".concat(message.sender)
     }, message.text);
+  }), /*#__PURE__*/react.createElement("div", {
+    ref: messagesEndRef
   })), /*#__PURE__*/react.createElement("div", {
     className: "input-area"
   }, /*#__PURE__*/react.createElement("input", {

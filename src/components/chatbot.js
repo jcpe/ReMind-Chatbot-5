@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([{ sender: 'bot', text: 'Hey there! How can I help you today?' }]);
   const [input, setInput] = useState('');
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(scrollToBottom, [messages]);
 
   const sendMessage = async () => {
     if (input.trim() === '') return;
@@ -29,6 +36,7 @@ const Chatbot = () => {
             {message.text}
           </div>
         ))}
+        <div ref={messagesEndRef}></div>
       </div>
       <div className="input-area">
         <input
