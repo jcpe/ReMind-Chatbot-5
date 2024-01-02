@@ -46,7 +46,7 @@ body.dark .messages {
 
 .message.user {
   align-self: flex-end;
-  background-color: #007bff;
+  background-color: #ffd361;
   color: #ffffff;
   padding: 5px 10px;
   border-radius: 10px 10px 0 10px;
