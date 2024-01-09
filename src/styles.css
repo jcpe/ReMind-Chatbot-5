@@ -6,11 +6,11 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #bb00ff;
+  background-color: #0e2d41;
   color: #000000;
   transition: all 0.3s ease;
 }
-
+/* jesse wuz here */
 body.dark {
   background-color: #1c1c1c;
   color: #ffffff;
@@ -46,7 +46,7 @@ body.dark .messages {
 
 .message.user {
   align-self: flex-end;
-  background-color: #ffd361;
+  background-color: #0e2d41;
   color: #ffffff;
   padding: 5px 10px;
   border-radius: 10px 10px 0 10px;

@@ -108,3 +108,11 @@ start = "pylsp"
 run = ["sh", "-c", "python3 main.py"]
 ignorePorts = false
 deploymentTarget = "gce"
+
+[[ports]]
+localPort = 80
+externalPort = 80
+
+[[ports]]
+localPort = 8080
+externalPort = 8080
