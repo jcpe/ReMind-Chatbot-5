@@ -16,8 +16,9 @@
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n  font-family: Arial, sans-serif;\n  margin: 0;\n  padding: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100vh;\n  background-color: #bb00ff;\n  color: #000000;\n  transition: all 0.3s ease;\n}\n/* jesse wuz here */\nbody.dark {\n  background-color: #1c1c1c;\n  color: #ffffff;\n}\n\n.chatbot {\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  max-width: 400px;\n  height: 500px;\n}\n\n.messages {\n  flex-grow: 1;\n  overflow-y: auto;\n  padding: 10px;\n  background-color: #f5f5f5;\n}\n\nbody.dark .messages {\n  background-color: #2c2c2c;\n}\n\n.message {\n  margin-bottom: 10px;\n  line-height: 1.4;\n  word-wrap: break-word;\n}\n\n.message.user {\n  align-self: flex-end;\n  background-color: #ffd361;\n  color: #ffffff;\n  padding: 5px 10px;\n  border-radius: 10px 10px 0 10px;\n}\n\n.message.bot {\n  align-self: flex-start;\n  background-color: #e9e9e9;\n  color: #000000;\n  padding: 5px 10px;\n  border-radius: 10px 10px 10px 0;\n}\n\nbody.dark .message.bot {\n  background-color: #3d3d3d;\n  color: #ffffff;\n}\n\n.input-area {\n  display: flex;\n  padding: 5px;\n  border-top: 1px solid #ccc;\n}\n\n.input-area input {\n  flex-grow: 1;\n  border: none;\n  border-radius: 5px;\n  padding: 5px;\n  outline: none;\n}\n\n.input-area button {\n  background-color: #000;\n  color: #ffffff;\n  border: none;\n  border-radius: 5px;\n  padding: 5px 10px;\n  margin-left: 5px;\n  cursor: pointer;\n}\n\nbody.dark .input-area button {\n  background-color: #3d3d3d;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* Import Poppins font */\n\nbody {\n  font-family: Arial, sans-serif;\n  margin: 0;\n  padding: 0;\n  display: flex;\n  justify-content: center;\n  align-items: flex-end;\n  height: 100vh;\n  background-color: #343640; /* Dark mode background */\n  color: #FFF; /* Light text color for dark mode */\n  transition: all 0.3s ease;\n}\n\n.chatbot {\n  border-radius: 5px;\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n  width: 768px;\n  max-width: 768px;\n  height: 500px;\n  background-color: #000; /* Dark background for the chatbot area */\n  margin-top: 60px;\n  }\n\n/* Header for the app name */\n.chatbot-header {\n  width: 100%;\n  z-index: 1000; \n  background-color: #0e2d41; /* Primary color for the header */\n  color: #FFF;\n  font-family: 'Poppins', Arial, sans-serif; /* Use Poppins with Arial as fallback */\n  padding: 10px;\n  font-size: 1.5em;\n  text-align: center;\n}\n\n.messages {\n  flex-grow: 1;\n  overflow-y: auto;\n  padding: 10px;\n  background-color: #1c1c1c; /* Slightly lighter dark color for messages area */\n}\n\n.message {\n  margin-bottom: 10px;\n  line-height: 1.4;\n  word-wrap: break-word;\n}\n\n.message.user {\n  align-self: flex-end;\n  background-color: #0e2d41; /* Primary color for user messages */\n  color: #ffffff;\n  padding: 5px 10px;\n  border-radius: 10px 10px 0 10px;\n}\n\n.message.bot {\n  align-self: flex-start;\n  background-color: #3d3d3d; /* Slightly lighter color for bot messages */\n  color: #ffffff;\n  padding: 5px 10px;\n  border-radius: 10px 10px 10px 0;\n}\n\n.input-area {\n  display: flex;\n  padding: 5px;\n  border-top: 1px solid #ccc; /* Change from yellow to a neutral color */\n}\n\n.input-area input {\n  flex-grow: 1;\n  border-radius: 5px;\n  padding: 5px;\n  outline: none;\n  background-color: #1c1c1c; /* Input field background */\n  color: #ffffff; /* Input field text color */\n  border: 1px solid transparent;\n  transition: border-color 0.3s;\n}\n.input-area input:focus {\n  border-color: #ffd361; /* Yellow border on focus */\n}\n.input-area button {\n  background-color: #ffd361; /* Secondary color for send button */\n  color: #000; /* Dark text for contrast */\n  border: none;\n  border-radius: 5px;\n  padding: 5px 10px;\n  margin-left: 5px;\n  cursor: pointer;\n  transition: background-color 0.3s;\n}\n\n.input-area button:hover {\n  background-color: #ffd361; /* Yellow background on hover */\n}\n\n/* Media query for tablets */\n@media (max-width: 768px) {\n  .chatbot {\n    width: 100%;\n    height: auto;\n    margin-bottom: 10px;\n  }\n  /* Additional stylings for tablet responsiveness if needed */\n}\n\n/* Media query for mobile devices */\n@media (max-width: 480px) {\n  .chatbot {\n    width: 100%;\n    margin-bottom: 0;\n  }\n  .message {\n    font-size: smaller;\n  }\n  .input-area {\n    flex-direction: column;\n    align-items: stretch;\n  }\n  .input-area input,\n  .input-area button {\n    width: 100%;\n    margin: 2px 0; /* Small margin between input and button on small devices */\n  }\n  /* Additional stylings for mobile responsiveness if needed */\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4362,9 +4363,18 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var Chatbot = function Chatbot() {
+  // Array of different prompts
+  var prompts = ['Welcome! Can you share with me the particular issue or question you need assistance with today?', 'Hi there! What specific challenge can I help you tackle right now?', 'Greetings! I\'m here to help. What\'s the exact problem you\'re facing that you\'d like some assistance with?', 'Hello! To better assist you, could you describe the particular problem or topic you need help with?', 'Good day! What specific issue or question brings you here today that I can help with?', 'Hi! I\'m ready to assist. Can you tell me about the specific challenge or query you have in mind?', 'Welcome aboard! What particular problem or question do you need help solving today?', 'Hello! I\'m your assistant for today. Could you specify the problem or area where you\'re seeking assistance?', 'Hi! Let\'s get started. What specific issue or challenge can I assist you with today?', 'Greetings! To offer the best assistance, could you please tell me about the specific problem or question you have? This stuff'];
+
+  // Function to get a random prompt
+  var getRandomPrompt = function getRandomPrompt() {
+    var randomIndex = Math.floor(Math.random() * prompts.length);
+    console.log(prompts[randomIndex]);
+    return prompts[randomIndex];
+  };
   var _useState = (0,react.useState)([{
       sender: 'bot',
-      text: 'Hey there! How can I help you today?'
+      text: getRandomPrompt()
     }]),
     _useState2 = _slicedToArray(_useState, 2),
     messages = _useState2[0],
@@ -4431,7 +4441,9 @@ var Chatbot = function Chatbot() {
       return _ref.apply(this, arguments);
     };
   }();
-  return /*#__PURE__*/react.createElement("div", {
+  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("div", {
+    className: "chatbot-header"
+  }, "Re:Mind"), /*#__PURE__*/react.createElement("div", {
     className: "chatbot"
   }, /*#__PURE__*/react.createElement("div", {
     className: "messages"
@@ -4455,7 +4467,7 @@ var Chatbot = function Chatbot() {
     }
   }), /*#__PURE__*/react.createElement("button", {
     onClick: sendMessage
-  }, "Send")));
+  }, "Send"))));
 };
 /* harmony default export */ const chatbot = (Chatbot);
 // EXTERNAL MODULE: ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js
