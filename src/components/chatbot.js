@@ -16,63 +16,61 @@ const Chatbot = () => {
     'Greetings! To offer the best assistance, could you please tell me about the specific problem or question you have? This stuff'
   ];
 
-  // Function to get a random prompt
-  const getRandomPrompt = () => {
-    const randomIndex = Math.floor(Math.random() * prompts.length);
-    console.log(prompts[randomIndex]);
-    return prompts[randomIndex];
-  };
+const getRandomPrompt = () => {
+  const randomIndex = Math.floor(Math.random() * prompts.length);
+  console.log(prompts[randomIndex]);
+  return prompts[randomIndex];
+};
 
-  const [messages, setMessages] = useState([{ sender: 'bot', text: getRandomPrompt() }]);
-  const [input, setInput] = useState('');
-  const messagesEndRef = useRef(null);
+const [messages, setMessages] = useState([{ sender: 'bot', text: getRandomPrompt() }]);
+const [input, setInput] = useState('');
+const messagesContainerRef = useRef(null);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
+useEffect(() => {
+  if (messagesContainerRef.current) {
+    messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
+  }
+}, [messages]);
 
-  useEffect(scrollToBottom, [messages]);
+const sendMessage = async () => {
+  if (input.trim() === '') return;
 
-  const sendMessage = async () => {
-    if (input.trim() === '') return;
+  const newMessages = [...messages, { sender: 'user', text: input }];
+  setMessages(newMessages);
+  setInput('');
 
-    const newMessages = [...messages, { sender: 'user', text: input }];
-    setMessages(newMessages);
-    setInput('');
+  try {
+    const response = await axios.post('/ask', { transcript: newMessages }, { withCredentials: true });
+    const botMessage = response.data;
+    setMessages(prevMessages => [...prevMessages, { sender: 'bot', text: botMessage }]);
+  } catch (error) {
+    console.error('Error sending message:', error);
+  }
+};
 
-    try {
-      const response = await axios.post('/ask', { transcript: newMessages }, { withCredentials: true });
-      const botMessage = response.data;
-      setMessages((prevMessages) => [...prevMessages, { sender: 'bot', text: botMessage }]);
-    } catch (error) {
-      console.error('Error sending message:', error);
-    }
-  };
-
-  return (
-    <>
-      <div className="chatbot-header">Re:Mind</div>
-      <div className="chatbot">
-        <div className="messages">
-          {messages.map((message, index) => (
-            <div key={index} className={`message ${message.sender}`}>
-              {message.text}
-            </div>
-          ))}
-          <div ref={messagesEndRef}></div>
-        </div>
-        <div className="input-area">
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
-          />
-          <button onClick={sendMessage}>Send</button>
-        </div>
+return (
+  <>
+    <div className="chatbot-header">Re:Mind</div>
+    <div className="chatbot">
+      <div className="messages" ref={messagesContainerRef}>
+        {messages.map((message, index) => (
+          <div key={index} className={`message ${message.sender}`}>
+            {message.text}
+          </div>
+        ))}
       </div>
-    </>
-  );
-  };
+      <div className="input-area">
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+        />
+        <button onClick={sendMessage}>Send</button>
+      </div>
+    </div>
+  </>
+);
+};
 
 export default Chatbot;
