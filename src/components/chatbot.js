@@ -13,7 +13,7 @@ const Chatbot = () => {
     'Welcome aboard! What particular problem or question do you need help solving today?',
     'Hello! I\'m your assistant for today. Could you specify the problem or area where you\'re seeking assistance?',
     'Hi! Let\'s get started. What specific issue or challenge can I assist you with today?',
-    'Greetings! To offer the best assistance, could you please tell me about the specific problem or question you have? This stuff'
+    'Greetings! To offer the best assistance, could you please tell me about the specific problem or question you have?'
   ];
 
 const getRandomPrompt = () => {
@@ -48,29 +48,42 @@ const sendMessage = async () => {
   }
 };
 
-return (
-  <>
-    <div className="chatbot-header">Re:Mind</div>
-    <div className="chatbot">
-      <div className="messages" ref={messagesContainerRef}>
-        {messages.map((message, index) => (
-          <div key={index} className={`message ${message.sender}`}>
-            {message.text}
-          </div>
-        ))}
+  return (
+    <div className="chat-container">
+      <div className="left-side">
+        <h1 className="app-name">Re:Mind</h1>
+        <h2 className="app-description">
+          Discover the best decision-making strategies for your issues with Re:Mind.
+        </h2>
+        {/* Add your examples here */}
+        <div className="example">
+          <p>Example 1: When faced with a complex problem, try breaking it down...</p>
+        </div>
+        <div className="example">
+          <p>Example 2: For decisions with significant long-term effects, consider...</p>
+        </div>
+        {/* Add more examples as needed */}
       </div>
-      <div className="input-area">
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
-        />
-        <button onClick={sendMessage}>Send</button>
+      <div className="chatbot">
+        <div className="messages" ref={messagesContainerRef}>
+          {messages.map((message, index) => (
+            <div key={index} className={`message ${message.sender}`}>
+              {message.text}
+            </div>
+          ))}
+        </div>
+        <div className="input-area">
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+          />
+          <button onClick={sendMessage}>Send</button>
+        </div>
       </div>
     </div>
-  </>
-);
+  );
 };
 
 export default Chatbot;

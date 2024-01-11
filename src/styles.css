@@ -2,48 +2,69 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', Arial, sans-serif;
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  justify-content: flex-start; /* Align children to the start */
+  align-items: stretch; /* Stretch children to fill the container height */
   height: 100vh;
-  background-color: #343640; /* Dark mode background */
-  color: #FFF; /* Light text color for dark mode */
-  transition: all 0.3s ease;
+  background-color: #343640;
+  color: #FFF;
   overflow-x: hidden;
+}
+
+.chat-container {
+  display: flex;
+  width: 100vw; /* Use viewport width to ensure it covers the entire width */
+  height: 100vh; /* Use viewport height to ensure it covers the entire height */
 }
 
 .chatbot {
   border-radius: 5px;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;/* Make sure the input area stays at the bottom */
-  width: 768px;
-  max-width: 768px;
-  max-height: 100vh;
-  background-color: transparent; /* Remove the background */
-  margin-top: 60px;
-  position: relative;
-  z-index: 1;
+  width: 50%; /* Half the width */
+  background-color: #2c2c2c; /* A visible color different from body background */
+  overflow: hidden;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-/* Header for the app name */
-.chatbot-header {
-  width: 100%;
-  position: fixed; /* Changed from relative to fixed position */
-  top: 0; /* Align to the top of the viewport */
-  left: 0; /* Align to the left of the viewport */
-  z-index: 1000; /* High z-index to ensure the header is above other content */
-  background-color: #0e2d41; /* Primary color for the header */
-  color: #FFF;
-  font-family: 'Poppins', Arial, sans-serif; /* Use Poppins with Arial as fallback */
-  padding: 10px;
-  font-size: 1.5em;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,.3); /* Add shadow for depth (optional) */
+.left-side {
+  width: 50%; /* Adjust as needed */
+  padding-top: 100px; /* Space from the top */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align text to the left */
+  padding-left: 50px; /* Space from the left side */
+  color: #FFF; /* Default text color */
+  font-family: 'Poppins', sans-serif;
+  background-color: #0e2d41;
+}
+
+.app-name {
+  font-size: 100px;
+  color: #ffd361;
+  margin: 0; /* Removes default margin */
+}
+
+.app-description {
+  font-size: 50px; /* Half the size of the app name */
+  margin: 20px 0; /* Adjust the space around the description */
+}
+
+.example {
+  margin: 20px 0; /* Space between examples */
+  border: 1px solid #ffd361;
+  border-radius: 15px; /* Rounded corners */
+  padding: 10px; /* Padding inside the boxes */
+}
+
+.example p {
+  margin: 0; /* Removes default paragraph margin */
+  color: white;
+  font-size: 1.1em;
 }
 
 .messages {
@@ -53,11 +74,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start; /* Left align messages */
+  justify-content: flex-end;
 }
 
 .message {
   margin-bottom: 10px;
   line-height: 1.4;
+  font-size: 1.1em;
   word-wrap: break-word;
   animation: slideUpAndFade 0.3s ease-out;
 }
@@ -81,7 +104,7 @@ body {
 .input-area {
   display: flex;
   padding: 10px;
-  border-top: 1px solid #ffd361; /* Make border yellow */
+  position: static;
 }
 
 .input-area input {
@@ -92,6 +115,7 @@ body {
   background-color: transparent; /* Make input transparent */
   color: #ffffff;
   border: 1px solid #ffd361; /* Make border yellow */
+  font-size: 1.1em;
   margin-right: 5px; /* Add space between input and button */
 }
 
@@ -104,8 +128,13 @@ body {
   color: #000;
   border: none;
   border-radius: 5px;
-  padding: 10px 20px; /* Increase padding to make button larger */
+  padding: 15px 30px; /* Increase padding to make button larger */
   cursor: pointer;
+  font-size: 1.1em;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-family: 'Poppins', sans-serif; /* Set Poppins as the font family */
+  font-weight: 700; /* 700 weight for bold */
 }
 
 .input-area button:hover {
